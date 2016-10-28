@@ -90,6 +90,16 @@ class Client(object):
             start_code, start_resp = self.req_startgame()  # player joining starts game
             return True
 
+    def transform_gamestate(self, resp):
+        """
+        Convert game state into 2d array of True's if own pawn, False's otherwise.
+        """
+        game_state = resp['data']['state']
+        for col in game_state:
+            for row in col:
+                game_state[col][row] = (game_state[col][row] == self.player_id)
+        return game_state
+
     def play_game(self):
         """
         Once a game has been started, poll the game for state and send moves if required.
@@ -106,6 +116,6 @@ class Client(object):
                     else:
                         print("You lost. Oh well.")
                 elif resp['data']['player'] == self.player_id:
-                    move = self.movegen.make_move(resp)
+                    move = self.movegen.make_move(self.transform_gamestate(resp))
                     move_code, move_resp = self.req_move(move)
 
