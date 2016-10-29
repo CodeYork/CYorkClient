@@ -97,6 +97,7 @@ class Client(object):
         game_state = resp['data']['state']
         for col in game_state:
             for row in col:
+                if game_state[col][row] is None: continue
                 game_state[col][row] = (game_state[col][row] == self.player_id)
         return game_state
 
