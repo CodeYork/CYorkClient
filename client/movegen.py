@@ -32,6 +32,9 @@ class MoveGeneratorAI(MoveGenerator):
     def make_move(self, state):
         """
         Paste your code in here! Make sure to indent with 8 spaces.
+
+        (The code in here right now is a stand-in that chooses a random
+        column. Can you see how this works?)
         """
         return random.randint(0, len(state)-1)
 
@@ -44,6 +47,7 @@ class MoveGeneratorPlayer(MoveGenerator):
     def make_move(self, state):
         """
         Print state to screen and ask for a column to drop token into.
+
         WARNING: Messy string manipulations ahead. Don't worry if you can't read it,
         but trying to understand it is always a big plus!
         """
