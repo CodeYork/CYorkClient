@@ -4,7 +4,13 @@ Main client class.
 Sends requests to server and handles move making.
 """
 
-from urllib2 import Request, urlopen  # TODO: students actually use python3 lmao rip
+import sys
+
+if sys.version_info[0] == 2:
+    from urllib2 import Request, urlopen
+else:
+    from urllib.request import Request, urlopen
+
 import json
 import time
 from movegen import *
@@ -44,8 +50,8 @@ def make_request(url, method, body={}):
 class Client(object):
 
     def __init__(self, move_gen):
-        self.game_id = 0
-        self.player_id = 0
+        self.game_id = None
+        self.player_id = None
         self.movegen = move_gen
 
     def req_newgame(self):
@@ -87,7 +93,7 @@ class Client(object):
                 print("No game with ID " + str(self.game_id) + " exists.")
                 return False
             self.player_id = response['data']['player']
-            start_code, start_resp = self.req_startgame()  # player joining starts game
+            #start_code, start_resp = self.req_startgame()  # player joining starts game
             return True
 
     def transform_gamestate(self, resp):
@@ -107,7 +113,7 @@ class Client(object):
         """
         game_finished = False
         while not game_finished:
-            time.sleep(3)
+            time.sleep(1)
             code, resp = self.req_gamestate()
             if code == 200:
                 if resp['data']['finished']:
