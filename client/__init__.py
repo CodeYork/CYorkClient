@@ -1,2 +1,2 @@
-from client import *
-from movegen import *
+from client.client import *
+from client.movegen import *

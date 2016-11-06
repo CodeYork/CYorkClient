@@ -5,7 +5,7 @@ Move generator class.
 import abc
 
 
-class MoveGenerator(abc.ABCMeta):
+class MoveGenerator(object, metaclass=abc.ABCMeta):
     """
     Generator of Connect 4 moves.
     """
@@ -51,12 +51,5 @@ class MoveGeneratorPlayer(MoveGenerator):
         WARNING: Messy string manipulations ahead. Don't worry if you can't read it,
         but trying to understand it is always a big plus!
         """
-        print("Current game state (X = you, O = opponent, _ = no token):")
-        print(" ".join(range(len(state))))
-        # Convert state from list of columns to list of rows
-        state_rows = [[col[r] for col in state] for r, _ in enumerate(state[0])]
-        # Convert each row into a string of Xs, Os and _s
-        printable_rows = [" ".join({True: "X", False: "O", None: "_"}[x] for x in row) for row in state_rows]
-        print("\n".join(printable_rows))
         return int(input("Enter the column you want: "))
 

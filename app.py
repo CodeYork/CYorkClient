@@ -5,7 +5,8 @@ def main():
     """
     Instantiate app.
     """
-    app = client.Client(client.MoveGeneratorPlayer())
+    movegen = client.MoveGeneratorPlayer()
+    app = client.Client(movegen)
     app.run()
 
 
