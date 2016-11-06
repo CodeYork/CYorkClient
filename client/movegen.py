@@ -45,11 +45,5 @@ class MoveGeneratorPlayer(MoveGenerator):
     """
 
     def make_move(self, state):
-        """
-        Print state to screen and ask for a column to drop token into.
-
-        WARNING: Messy string manipulations ahead. Don't worry if you can't read it,
-        but trying to understand it is always a big plus!
-        """
         return int(input("Enter the column you want: "))
 
