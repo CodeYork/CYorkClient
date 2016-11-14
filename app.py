@@ -7,10 +7,10 @@ def main(args):
     """
     Instantiate app.
     """
-    if len(args) > 1 and args[1] == '--player':
-        movegen = client.MoveGeneratorPlayer()
-    else:
+    if input("AI player? (y/n) ") == 'y':
         movegen = client.MoveGeneratorAI()
+    else:
+        movegen = client.MoveGeneratorPlayer()
     app = client.Client(movegen)
     app.run()
 
