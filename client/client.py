@@ -91,7 +91,7 @@ class Client(object):
             self.game_id = input("Give a game id (from whoever started the game): ")
             code, response = self.req_join()
             if code == 403:
-                print("No game with ID " + str(self.game_id) + " exists.")
+                print("The game with ID " + str(self.game_id) + " is already full.")
                 return False
             self.player_id = response['data']['player']
             return True
