@@ -1,15 +1,19 @@
 import client
+import sys
 
 
-def main():
+def main(args):
     """
     Instantiate app.
     """
-    movegen = client.MoveGeneratorPlayer()
+    if args[1] == '--player':
+        movegen = client.MoveGeneratorPlayer()
+    else:
+        movegen = client.MoveGeneratorAI()
     app = client.Client(movegen)
     app.run()
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
 

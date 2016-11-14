@@ -3,6 +3,7 @@ Move generator class.
 """
 
 import abc
+from yourcode import my_move
 
 
 class MoveGenerator(object, metaclass=abc.ABCMeta):
@@ -31,12 +32,9 @@ class MoveGeneratorAI(MoveGenerator):
 
     def make_move(self, state):
         """
-        Paste your code in here! Make sure to indent with 8 spaces.
-
-        (The code in here right now is a stand-in that chooses a random
-        column. Can you see how this works?)
+        Run students' AI.
         """
-        return random.randint(0, len(state)-1)
+        return my_move(state)
 
 
 class MoveGeneratorPlayer(MoveGenerator):
