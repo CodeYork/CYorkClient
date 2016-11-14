@@ -18,7 +18,7 @@ def my_move(state):
     """
     # An example program to choose a random column for your move.
     num_columns = len(state[0])
-    chosen_column = random.randint(num_columns)
+    chosen_column = random.randint(0, num_columns)
 
     return chosen_column
 
