@@ -3,7 +3,6 @@ Move generator class.
 """
 
 import abc
-from yourcode import my_move
 
 
 class MoveGenerator(object, metaclass=abc.ABCMeta):
