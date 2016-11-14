@@ -6,7 +6,7 @@ def main(args):
     """
     Instantiate app.
     """
-    if args[1] == '--player':
+    if len(args) > 1 and args[1] == '--player':
         movegen = client.MoveGeneratorPlayer()
     else:
         movegen = client.MoveGeneratorAI()
