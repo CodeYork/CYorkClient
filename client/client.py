@@ -7,13 +7,14 @@ Sends requests to server and handles move making.
 import sys
 
 if sys.version_info[0] == 2:
-    from urllib2 import *
+    from urllib2 import Request, urlopen, HTTPError
 else:
-    from urllib.request import *
+    from urllib.request import Request, urlopen, HTTPError
 
 import json
 import time
 from client.movegen import *
+
 
 BASEURL = "https://four.gjcampbell.co.uk/"
 GET, POST = 0, 1
@@ -35,12 +36,6 @@ def make_request(url, method, body={}):
     if method not in [GET, POST]:
         raise ValueError("Must have get or post request")
     body_data = json.dumps(body).encode('utf-8', 'replace')
-
-    proxy = ProxyHandler({'http': '10.67.224.2:8000'})
-    opener = build_opener(proxy)
-
-    install_opener(opener)
-
     req = Request(url) if method==GET else Request(url, body_data)
     req.add_header('Content-Type', 'application/json')
     try:
